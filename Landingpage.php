@@ -31,7 +31,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="Loginpage.php"><ntc>Login</ntc></a></li>
-            <li><a class="dropdown-item" href="Signoutpage.php"><ntc>Log out</ntc></a></li>
+            <li><a class="dropdown-item" href="Logoutpage.php"><ntc>Log out</ntc></a></li>
             <li><a class="dropdown-item" href="Signuppage.php"><ntc>Sign up</ntc></a></li>
           </ul>
         </li>
@@ -43,4 +43,7 @@
     <p>this text is a test for formattings sake</p>
   </div>
     </body>
+  <footer>
+    <p>this text is a test for formattings sake</p>
+  </footer>
 </html>

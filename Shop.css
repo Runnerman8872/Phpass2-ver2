@@ -8,6 +8,7 @@ ntc{
 }
 nav{
     margin-left: 3px;
+    margin-right: 3px;
 }
 .flex-container{
     background-color: #FAFAFA;
@@ -16,5 +17,5 @@ nav{
     color:000000;
 }
 footer{
-
+    background-color: #A84E4F;
 }
