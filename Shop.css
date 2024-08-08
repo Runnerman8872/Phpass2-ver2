@@ -6,6 +6,9 @@ body{
 ntc{
     color: #EAEAEA;
 }
+nav{
+    margin-left: 3px;
+}
 .flex-container{
     background-color: #FAFAFA;
     margin-left: 5%;
@@ -13,5 +16,5 @@ ntc{
     color:000000;
 }
 footer{
-    
+
 }

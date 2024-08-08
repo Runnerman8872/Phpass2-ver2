@@ -20,19 +20,19 @@
           <a class="nav-link active" aria-current="page" href="Landingpage.php"><ntc>Home</ntc></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ShopPage.php"><ntc>Shop</ntc></a>
+          <a class="nav-link" href="Shoppage.php"><ntc>Shop</ntc></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ShipPage.php"><ntc>Basket</ntc></a>
+          <a class="nav-link" href="Shippage.php"><ntc>Basket</ntc></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <ntc>User</ntc>
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="LoginPage.php"><ntc>Login</ntc></a></li>
-            <li><a class="dropdown-item" href="SignoutPage.php"><ntc>Log out</ntc></a></li>
-            <li><a class="dropdown-item" href="SignupPage.php"><ntc>Sign up</ntc></a></li>
+            <li><a class="dropdown-item" href="Loginpage.php"><ntc>Login</ntc></a></li>
+            <li><a class="dropdown-item" href="Signoutpage.php"><ntc>Log out</ntc></a></li>
+            <li><a class="dropdown-item" href="Signuppage.php"><ntc>Sign up</ntc></a></li>
           </ul>
         </li>
       </ul>
