@@ -20,5 +20,15 @@ try{
 } catch (PDOException $e) {
     throw new PDOException($e->getMessage(), $e->getCode());
 }
+$name = "Tim";
+
+$stmt = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
+#$stmt -> execute([$name]);
+#$user = $stmt->fetch();
+
+foreach ($stmt as $row)
+{
+    echo $row["UserName"]."\n";
+}
 
 ?>
