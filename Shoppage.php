@@ -1,6 +1,5 @@
 <?php
-  $logged_in = false;
-
+  require_once("C.php")
 ?>
 
 <html>
@@ -36,14 +35,6 @@
           </a>
           <ul class="dropdown-menu">
             <?php
-            
-            if(isset($_POST["Logout"])){
-              $logged_in = true;
-            }
-
-            if(isset($_POST["Login"])){
-              $logged_in = false;
-            }
 
             if ($logged_in == true){
               echo'<form method="post"> 
@@ -66,7 +57,7 @@
   </nav>
   <div class="flex-container">
     <p>this text is a test for formattings sake</p>
-    <?php
+    <?php 
     if ($logged_in == true){
       echo "true";
     }
