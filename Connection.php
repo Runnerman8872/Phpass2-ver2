@@ -25,6 +25,7 @@ try{
 $name = "Tim";
 
 $stmt = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
+
 #$stmt -> execute([$name]);
 #$user = $stmt->fetch();
 
@@ -54,8 +55,8 @@ $UserEmail = "";
 $nameerror = "";
 $passworderror = "";
 $emailerror = "";
-$NameRepeat = false;
-$EmailRepeat = false;
+$NameRepeat = true;
+$EmailRepeat = true;
 Class NewUser{
 
 }

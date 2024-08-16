@@ -48,11 +48,13 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
       if (empty($_POST["name"])){
         $nameerror = "Name is required";
+        $NameRepeat = true;
       } else{
         $Username = test_input($_POST["name"]);
         if (!preg_match("/^[a-zA-Z-' ]*$/",$Username)){
           $nameerror = "Only Letters and space is allowed";
         }
+        $NameRepeat = false;
       }
 
       if (empty($_POST["password"])){
@@ -65,12 +67,14 @@
     }
       
       if (empty($_POST["email"])){
-        $passworderror = "email is required";
+        $emailerror = "email is required";
+        $EmailRepeat = true;
       } else{
         $UserEmail = test_input(($_POST["email"]));
         if (!filter_var($UserEmail, FILTER_VALIDATE_EMAIL)) {
           $emailerror = "Invalid email format";
         }
+        $EmailRepeat = false;
       }
       $stmt2 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
       $stmt3 = $pdo -> query("SELECT UserEmail FROM isaacsbooksuser");
@@ -90,6 +94,10 @@
          echo (" Same email \n");
          $EmailRepeat = true;
        }
+    }
+#Primary issue: can add info via below code VV but cant add data via the $ system (I.E. $Username wont add the inputted user data but Test1 as shown below does)
+    if ($EmailRepeat == false && $NameRepeat == false){
+      $AddUser = $pdo -> query("INSERT INTO isaacsbooksuser (UserName, UserEmail, UserPassword) VALUES('Test1', 'Test2', 'Test3');");
     }
     }
   
@@ -115,6 +123,23 @@
       <input type="submit" name="submit" value="submit"> 
     </form>
     <?php
+
+    if ($EmailRepeat == false && $NameRepeat == false)
+    {
+
+    }
+
+    if ($EmailRepeat == false){
+      echo("email has no repeated \n");
+    } else{
+      echo("email has repeated unfortunately \n");
+    }
+
+    if ($NameRepeat == false){
+      echo("name has no repeated \n");
+    } else{
+      echo("name has repeated unfortunately \n");
+    }
     ?>
     </body>
   <footer>
