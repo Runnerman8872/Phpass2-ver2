@@ -72,6 +72,25 @@
           $emailerror = "Invalid email format";
         }
       }
+      $stmt2 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
+      $stmt3 = $pdo -> query("SELECT UserEmail FROM isaacsbooksuser");
+
+        foreach ($stmt2 as $row)
+      {
+        echo ("a");
+        if ($Username == $row["UserName"]){
+          echo (" Same name \n");
+          $NameRepeat = true;
+        }
+     }
+     foreach ($stmt3 as $row2)
+     {
+       echo ("a");
+       if ($UserEmail == $row2["UserEmail"]){
+         echo (" Same email \n");
+         $EmailRepeat = true;
+       }
+    }
     }
   
     function test_input($data) {
@@ -83,15 +102,7 @@
 
     echo "Name: $Username, password: $UserPword, Email: $UserEmail";
 
-    $stmt2 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
 
-    foreach ($stmt2 as $row)
-  {
-    echo ("a");
-    if ($Username == $row["UserName"]){
-      echo ("Same \n");
-    }
-  }
 
     ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  

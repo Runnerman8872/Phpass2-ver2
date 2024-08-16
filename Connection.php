@@ -55,6 +55,7 @@ $nameerror = "";
 $passworderror = "";
 $emailerror = "";
 $NameRepeat = false;
+$EmailRepeat = false;
 Class NewUser{
 
 }
