@@ -1,5 +1,7 @@
 <p>H test</p>
+
 <?php
+#useful assistant https://www.w3schools.com/php/php_form_url_email.asp
 $type = "mysql";
 $server = "localhost"; #V
 $db = "isaacsbooks"; #V
@@ -26,6 +28,8 @@ $stmt = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
 #$stmt -> execute([$name]);
 #$user = $stmt->fetch();
 
+
+
 foreach ($stmt as $row)
 {
     echo $row["UserName"]."\n";
@@ -39,4 +43,13 @@ if(isset($_POST["Login"])){
   $logged_in = false;
 }
   echo"php test";
+
+$name2 = $form["UserName"];
+
+/* /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ */
+
+Class NewUser{
+
+}
+
 ?>
