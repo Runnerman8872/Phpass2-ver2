@@ -41,14 +41,11 @@
   </nav>
   <div class="flex-container">
     <?php
-    $Username = "";
-    $UserPword = "";
-    $UserEmail = "";
-    $nameerror = "";
-    $passworderror = "";
-    $emailerror = "";
+    require_once ("Connection.php");
 
-    /*if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
       if (empty($_POST["name"])){
         $nameerror = "Name is required";
       } else{
@@ -57,52 +54,57 @@
           $nameerror = "Only Letters and space is allowed";
         }
       }
-    */
-    if (isset($_POST["name"])){
-      $Username = ($_POST["name"]);
+
+      if (empty($_POST["password"])){
+        $passworderror = "Password is required";
+      } else{
+        $UserPword = test_input(($_POST["password"]));
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$UserPword)){
+          $passworderror = "Only Letters and space is allowed";
+      }
     }
-    else{
-      echo "Name is required";
+      
+      if (empty($_POST["email"])){
+        $passworderror = "email is required";
+      } else{
+        $UserEmail = test_input(($_POST["email"]));
+        if (!filter_var($UserEmail, FILTER_VALIDATE_EMAIL)) {
+          $emailerror = "Invalid email format";
+        }
+      }
+    }
+  
+    function test_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
     }
 
-    if (isset($_POST["password"])){
-      $UserPword = ($_POST["password"]);
-    }
-    else{
-      echo "Password is required";
-    }
+    echo "Name: $Username, password: $UserPword, Email: $UserEmail";
 
-    if (isset($_POST["email"])){
-      $UserEmail = ($_POST["email"]);
-    }
-    else{
-      echo "Email is required";
-    }
+    $stmt2 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
 
-    echo "Name: $Username, Password: $UserPword, Email: $UserEmail";
+    foreach ($stmt2 as $row)
+  {
+    echo ("a");
+    if ($Username == $row["UserName"]){
+      echo ("Same \n");
+    }
+  }
 
     ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
       Name: <input type="text" name="name">
+      <span class="error">* <?php echo $nameerror;?></span>
       Password: <input type="text" name="password">
+      <span class="error">* <?php echo $passworderror;?></span>
       Email: <input type="text" name="email">
+      <span class="error">* <?php echo $emailerror;?></span>
       <input type="submit" name="submit" value="submit"> 
     </form>
-   <!--
-  <div class="input-group mb-3">
-  <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-  </div>
-  <div class="input-group mb-3">
-  <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
--->
+    <?php
+    ?>
     </body>
   <footer>
     <p>this text is a test for formattings sake</p>

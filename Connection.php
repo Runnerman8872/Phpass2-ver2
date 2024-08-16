@@ -34,6 +34,7 @@ foreach ($stmt as $row)
 {
     echo $row["UserName"]."\n";
 }
+
 $logged_in = false;
 if(isset($_POST["Logout"])){
   $logged_in = true;
@@ -44,10 +45,16 @@ if(isset($_POST["Login"])){
 }
   echo"php test";
 
-$name2 = $form["UserName"];
 
-/* /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ */
 
+/* Signup page */
+$Username = "";
+$UserPword = "";
+$UserEmail = "";
+$nameerror = "";
+$passworderror = "";
+$emailerror = "";
+$NameRepeat = false;
 Class NewUser{
 
 }
