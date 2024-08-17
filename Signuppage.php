@@ -97,7 +97,7 @@
     }
 #Primary issue: can add info via below code VV but cant add data via the $ system (I.E. $Username wont add the inputted user data but Test1 as shown below does)
     if ($EmailRepeat == false && $NameRepeat == false){
-      $AddUser = $pdo -> query("INSERT INTO isaacsbooksuser (UserName, UserEmail, UserPassword) VALUES('Test1', 'Test2', 'Test3');");
+      $AddUser = $pdo -> query("INSERT INTO isaacsbooksuser (UserName, UserEmail, UserPassword) VALUES('$Username', '$UserEmail', '$UserPword');");
     }
     }
   
