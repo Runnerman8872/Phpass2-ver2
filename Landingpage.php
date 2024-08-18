@@ -1,4 +1,7 @@
 <html>
+<?php
+  require_once("Connection.php")
+?>
     <head>
     <meta charset="utf-8">
         <title>Isaacs Books</title>

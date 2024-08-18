@@ -135,6 +135,8 @@
     } else{
       echo("name has repeated unfortunately \n");
     }
+    echo("The current user is: ");
+    echo $_SESSION["UserLogin"];
     ?>
     </body>
   <footer>

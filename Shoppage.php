@@ -35,9 +35,12 @@
           </a>
           <ul class="dropdown-menu">
             <?php
-
-            $stmt2 = $pdo -> query(("SELECT UserName FROM isaacsbooksuser"));
-            $stmt4 = $pdo -> query(("SELECT UserPassword FROM isaacsbooksuser"));
+            $UserLogin = "";
+            $PwordLogin = "";
+            $_SESSION["UserLogin"] = $_POST[$UserLogin];
+            $_SESSION["PwordLogin"] = $_POST[$PwordLogin];
+            $stmt5 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
+            $stmt4 = $pdo -> query("SELECT UserPassword FROM isaacsbooksuser");
             if ($_SERVER['REQUEST_METHOD'] == "POST"){
               if (empty($_POST["loname"])){
                 echo "empty";
@@ -57,6 +60,7 @@
                 $data = htmlspecialchars($data);
                 return $data;
               }
+
 
 
             ?>
@@ -90,6 +94,14 @@
     }
     else{
       echo "false $UserLogin, $PwordLogin";
+    }
+    
+    foreach($stmt5 as $row){
+      if ($UserLogin == $row["UserName"]){
+        echo "nameright";
+        $NameMatchDB = true;
+      }
+      
     }
     ?>
   </div>
