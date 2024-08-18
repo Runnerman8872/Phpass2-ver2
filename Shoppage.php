@@ -34,23 +34,23 @@
             <ntc>User</ntc>
           </a>
           <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="Signuppage.php"><ntc>Sign up</ntc></a></li>
             <?php
-            $UserLogin = "";
-            $PwordLogin = "";
-            $_SESSION["UserLogin"] = $_POST[$UserLogin];
-            $_SESSION["PwordLogin"] = $_POST[$PwordLogin];
+
+            $_SESSION["UserLogin"] = "";
+            $_SESSION["PwordLogin"] = "";
             $stmt5 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
             $stmt4 = $pdo -> query("SELECT UserPassword FROM isaacsbooksuser");
             if ($_SERVER['REQUEST_METHOD'] == "POST"){
               if (empty($_POST["loname"])){
                 echo "empty";
               } else{
-                $UserLogin = test_input($_POST["loname"]);
+                $_SESSION["UserLogin"] = test_input($_POST["loname"]);
               }
               if(empty ($_POST["lopassword"])){
                 echo "empy";
               } else{
-                $PwordLogin = test_input(($_POST["lopassword"]));
+                $_SESSION["PwordLogin"] = test_input(($_POST["lopassword"]));
               }
               }
 
@@ -90,18 +90,20 @@
     <p>this text is a test for formattings sake</p>
     <?php 
     if ($logged_in == true){
-      echo "true $UserLogin, $PwordLogin";
+      echo "true ". $_SESSION["UserLogin"]. $_SESSION["PwordLogin"];
     }
     else{
-      echo "false $UserLogin, $PwordLogin";
+      echo "false ".  $_SESSION["UserLogin"], $_SESSION["PwordLogin"];
     }
     
     foreach($stmt5 as $row){
-      if ($UserLogin == $row["UserName"]){
+      if ($_SESSION["UserLogin"] == $row["UserName"]){
         echo "nameright";
         $NameMatchDB = true;
       }
-      
+      #User login "works" (transferes info from this page to sign up page as main example but not much else), need to make the
+      #program remember users and recognise when a user is logged in and when they are not, should take not much time to do
+      #hopefully
     }
     ?>
   </div>

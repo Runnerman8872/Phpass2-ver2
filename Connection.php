@@ -1,7 +1,7 @@
 <p>H test</p>
 
 <?php
-session_start();
+
 #useful assistant https://www.w3schools.com/php/php_form_url_email.asp
 $type = "mysql";
 $server = "localhost"; #V
@@ -61,8 +61,9 @@ $emailerror = "";
 $SUNameRepeat = true;
 $SUEmailRepeat = true;
 /* Login Page */
-$_SESSION["UserLogin"] = "";
-$_SESSION["PwordLogin"] = "";
+session_start();
+$UserLogin = "";
+$PwordLogin = "";
 $NameMatchDB = false;
 $PwordMatchDB = false;
 
