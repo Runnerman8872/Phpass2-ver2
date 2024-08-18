@@ -45,9 +45,11 @@ if(isset($_POST["Login"])){
   $logged_in = false;
 }
   echo"php test";
-
-
-
+/* cookie info 
+setcookie (
+  $name, $value
+);
+*/
 /* Signup page */
 $Username = "";
 $UserPword = "";
@@ -55,8 +57,11 @@ $UserEmail = "";
 $nameerror = "";
 $passworderror = "";
 $emailerror = "";
-$NameRepeat = true;
-$EmailRepeat = true;
+$SUNameRepeat = true;
+$SUEmailRepeat = true;
+/* Login Page */
+$UserLogin = "";
+$PwordLogin = "";
 Class NewUser{
 
 }

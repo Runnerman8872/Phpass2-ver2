@@ -48,13 +48,13 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
       if (empty($_POST["name"])){
         $nameerror = "Name is required";
-        $NameRepeat = true;
+        $SUNameRepeat = true;
       } else{
         $Username = test_input($_POST["name"]);
         if (!preg_match("/^[a-zA-Z-' ]*$/",$Username)){
           $nameerror = "Only Letters and space is allowed";
         }
-        $NameRepeat = false;
+        $SUNameRepeat = false;
       }
 
       if (empty($_POST["password"])){
@@ -68,35 +68,33 @@
       
       if (empty($_POST["email"])){
         $emailerror = "email is required";
-        $EmailRepeat = true;
+        $SUEmailRepeat = true;
       } else{
         $UserEmail = test_input(($_POST["email"]));
         if (!filter_var($UserEmail, FILTER_VALIDATE_EMAIL)) {
           $emailerror = "Invalid email format";
         }
-        $EmailRepeat = false;
+        $SUEmailRepeat = false;
       }
       $stmt2 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
       $stmt3 = $pdo -> query("SELECT UserEmail FROM isaacsbooksuser");
 
         foreach ($stmt2 as $row)
       {
-        echo ("a");
         if ($Username == $row["UserName"]){
           echo (" Same name \n");
-          $NameRepeat = true;
+          $SUNameRepeat = true;
         }
      }
      foreach ($stmt3 as $row2)
      {
-       echo ("a");
        if ($UserEmail == $row2["UserEmail"]){
          echo (" Same email \n");
-         $EmailRepeat = true;
+         $SUEmailRepeat = true;
        }
     }
 #Primary issue: can add info via below code VV but cant add data via the $ system (I.E. $Username wont add the inputted user data but Test1 as shown below does)
-    if ($EmailRepeat == false && $NameRepeat == false){
+    if ($SUEmailRepeat == false && $SUNameRepeat == false){
       $AddUser = $pdo -> query("INSERT INTO isaacsbooksuser (UserName, UserEmail, UserPassword) VALUES('$Username', '$UserEmail', '$UserPword');");
     }
     }
@@ -124,18 +122,15 @@
     </form>
     <?php
 
-    if ($EmailRepeat == false && $NameRepeat == false)
-    {
 
-    }
 
-    if ($EmailRepeat == false){
+    if ($SUEmailRepeat == false){
       echo("email has no repeated \n");
     } else{
       echo("email has repeated unfortunately \n");
     }
 
-    if ($NameRepeat == false){
+    if ($SUNameRepeat == false){
       echo("name has no repeated \n");
     } else{
       echo("name has repeated unfortunately \n");

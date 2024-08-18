@@ -36,19 +36,46 @@
           <ul class="dropdown-menu">
             <?php
 
-            if ($logged_in == true){
-              echo'<form method="post"> 
-                <input type="submit" name="Login"
-                class="button" value="Login" />
-                </form> ';
-            }
-            else{
-              echo '<form method="post"> 
+            $stmt2 = $pdo -> query(("SELECT UserName FROM isaacsbooksuser"));
+            $stmt4 = $pdo -> query(("SELECT UserPassword FROM isaacsbooksuser"));
+            if ($_SERVER['REQUEST_METHOD'] == "POST"){
+              if (empty($_POST["loname"])){
+                echo "empty";
+              } else{
+                $UserLogin = test_input($_POST["loname"]);
+              }
+              if(empty ($_POST["lopassword"])){
+                echo "empy";
+              } else{
+                $PwordLogin = test_input(($_POST["lopassword"]));
+              }
+              }
+
+              function test_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+              }
+
+
+            ?>
+
+            <?php if ($logged_in):?>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+                Username:<input type = "text" name = "loname">
+                <br></br>
+                Password:<input type = "text" name = "lopassword">
+                <input type="submit" name="submit" value="submit" />
+                </form>
+
+            
+            <?php else: ?>
+                <form method="post">
                 <input type="submit" name="Logout"
                 class="button" value="Logout" />
-                </form> ';
-            }
-            ?>
+                </form> 
+            <?php endif;?>
           </ul>
         </li>
       </ul>
@@ -59,10 +86,10 @@
     <p>this text is a test for formattings sake</p>
     <?php 
     if ($logged_in == true){
-      echo "true";
+      echo "true $UserLogin, $PwordLogin";
     }
     else{
-      echo "false";
+      echo "false $UserLogin, $PwordLogin";
     }
     ?>
   </div>
