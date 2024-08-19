@@ -30,20 +30,20 @@ $stmt = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
 #$stmt -> execute([$name]);
 #$user = $stmt->fetch();
 
-
+session_start();
 
 foreach ($stmt as $row)
 {
     echo $row["UserName"]."\n";
 }
 
-$logged_in = false;
+
 if(isset($_POST["Logout"])){
-  $logged_in = true;
+  $_SESSION["logged_in"] = false;
 }
 
 if(isset($_POST["Login"])){
-  $logged_in = false;
+  $_SESSION["logged_in"] = true;
 }
   echo"php test";
 /* cookie info */
@@ -61,7 +61,7 @@ $emailerror = "";
 $SUNameRepeat = true;
 $SUEmailRepeat = true;
 /* Login Page */
-session_start();
+
 $UserLogin = "";
 $PwordLogin = "";
 $NameMatchDB = false;

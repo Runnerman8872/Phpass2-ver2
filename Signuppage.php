@@ -122,7 +122,7 @@
     </form>
     <?php
 
-
+    
 
     if ($SUEmailRepeat == false){
       echo("email has no repeated \n");
@@ -135,7 +135,12 @@
     } else{
       echo("name has repeated unfortunately \n");
     }
-    echo "The current user is: " . $_SESSION["UserLogin"];
+    if ($_SESSION["logged_in"] == true){
+      echo "true ". $_SESSION["UserLogin"]. $_SESSION["PwordLogin"];
+    }
+    else{
+      echo "false ".  $_SESSION["UserLogin"], $_SESSION["PwordLogin"];
+    }
 
     ?>
     </body>
