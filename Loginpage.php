@@ -50,17 +50,19 @@
             else{
                 $LGError = "Password is incorrect";
             }
-            if ($LGID == $LPID){
-                $LGMatch = true;
-                $_SESSION["UserLogin"] = $LG;
-                $_SESSION["PwordLogin"] = $LP;
-                $_SESSION["AdminLogin"] = $ADM;
+        }
+
+        if ($LGID == $LPID){
+            $LGMatch = true;
+            $_SESSION["UserLogin"] = $LG;
+             $_SESSION["PwordLogin"] = $LP;
+             $_SESSION["AdminLogin"] = $ADM;
 
             }
-            else{
-                $LGMatch = false;
-            }
+        else{
+             $LGMatch = false;
         }
+
         if(isset($_POST["Logout"])){
             $_SESSION["logged_in"] = false;
           }
