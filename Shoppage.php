@@ -45,22 +45,12 @@
   <div class="flex-container">
     <p>this text is a test for formattings sake</p>
     <?php 
+      echo $LGID, $LPID;
     if ($_SESSION["logged_in"] == true){
       echo "true ". $_SESSION["UserLogin"]. $_SESSION["PwordLogin"];
     }
     else{
       echo "false ".  $_SESSION["UserLogin"], $_SESSION["PwordLogin"];
-    }
-
-    
-    foreach($stmt5 as $row){
-      if ($_SESSION["UserLogin"] == $row["UserName"]){
-        echo "nameright";
-        $NameMatchDB = true;
-      }
-      #User login "works" (transferes info from this page to sign up page as main example but not much else), need to make the
-      #program remember users and recognise when a user is logged in and when they are not, should take not much time to do
-      #hopefully
     }
     ?>
   </div>

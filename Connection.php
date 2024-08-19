@@ -38,13 +38,6 @@ foreach ($stmt as $row)
 }
 
 
-if(isset($_POST["Logout"])){
-  $_SESSION["logged_in"] = false;
-}
-
-if(isset($_POST["Login"])){
-  $_SESSION["logged_in"] = true;
-}
   echo"php test";
 /* cookie info */
 setcookie (
@@ -61,11 +54,12 @@ $emailerror = "";
 $SUNameRepeat = true;
 $SUEmailRepeat = true;
 /* Login Page */
-
+$LGMatch = false;
 $UserLogin = "";
 $PwordLogin = "";
 $NameMatchDB = false;
 $PwordMatchDB = false;
+
 
 
 ?>

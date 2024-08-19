@@ -1,19 +1,26 @@
 <li><a class="dropdown-item" href="Signuppage.php"><ntc>Sign up</ntc></a></li>
             <?php
-
-
-            $stmt5 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
-            $stmt4 = $pdo -> query("SELECT UserPassword FROM isaacsbooksuser");
+            $LGError = "";
+            $LPError = "";
+            $LG = "";
+            $LP = "";
+            $LGID = 3333333333;
+            $LPID = 3333333334;
+            $LGMatch = false;
+            $stmt4 = $pdo -> query("SELECT UserPassword, UserID FROM isaacsbooksuser");
+            $stmt5 = $pdo -> query("SELECT UserName, UserID FROM isaacsbooksuser");
+            $stmt6 = $pdo -> query("SELECT UserID FROM isaacsbooksuser");
+            
             if ($_SERVER['REQUEST_METHOD'] == "POST"){
               if (empty($_POST["loname"])){
                 echo "empty";
               } else{
-                $_SESSION["UserLogin"] = test_input($_POST["loname"]);
+                $LG = test_input($_POST["loname"]);
               }
               if(empty ($_POST["lopassword"])){
                 echo "empy";
               } else{
-                $_SESSION["PwordLogin"] = test_input(($_POST["lopassword"]));
+                $LP = test_input(($_POST["lopassword"]));
               }
               }
 
@@ -23,9 +30,41 @@
                 $data = htmlspecialchars($data);
                 return $data;
               }
+                  
+        foreach($stmt5 as $row){
+          if ($LG == $row["UserName"]){
+             echo "nameright";
+             $LGID = $row["UserID"];
+            }
+          else{
+            $LGError = "Username is incorrect";
+            }
+        foreach($stmt4 as $row){
+            if ($LP == $row["UserPassword"]){
+                echo "passwordright";
+                $LPID = $row["UserID"];
+            }
+            else{
+                $LGError = "Password is incorrect";
+            }
+            if ($LGID == $LPID){
+                $LGMatch = true;
+                $_SESSION["UserLogin"] = $LG;
+                $_SESSION["PwordLogin"] = $LP;
 
-
-
+            }
+            else{
+                $LGMatch = false;
+            }
+        }
+        if(isset($_POST["Logout"])){
+            $_SESSION["logged_in"] = false;
+          }
+          
+          if(isset($_POST["Login"]) && ($LGMatch == true)){
+            $_SESSION["logged_in"] = true;
+          }
+      }
             ?>
 
             <?php if ($_SESSION["logged_in"] == false):?>
