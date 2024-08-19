@@ -61,11 +61,13 @@ $PwordLogin = "";
 $NameMatchDB = false;
 $PwordMatchDB = false;
 /* Item Page*/
-$ISTMT = $pdo -> query("SELECT ItemName FROM isaacsbooksitem");
+$ItemRepeat = true;
 $ItemName = "";
 $ItemQuantity=0;
 $ItemPrice=0;
 $ItemGenre="";
-
-
+$Inameerror="";
+$Quanterror="";
+$Priceerror="";
+$Genreerror="";
 ?>

@@ -53,7 +53,8 @@
         if(empty($_POST["name"])){
             $Inameerror = "Name is required";
         } else{
-            $ItemName = test_input($_POST["name"]);
+
+            $ItemName = test_input2($_POST["name"]);
             if (!preg_match("/^[a-zA-Z-' ]*$/", $ItemName)){
                 $Inameerror = "only Letters and space is allowed";
             }
@@ -61,13 +62,15 @@
         if(empty($_POST["quant"])){
             $Quanterror = "quantity is required";
         } else{
-            $ItemQuantity = test_input(($_POST["quant"]));
+
+            $ItemQuantity = test_input2(($_POST["quant"]));
         }
 
         if(empty($_POST["price"])){
             $Priceerror = "price is needed";
         } else{
-            $ItemPrice = test_input(($_POST["price"]));
+
+            $ItemPrice = test_input2(($_POST["price"]));
             if(!preg_match("/^\d+(\.\d{1,2})?$/", $ItemPrice)){
                 $Priceerror =  "this isn't a valid currency input";
             }
@@ -75,13 +78,31 @@
         if(empty($_POST["genre"])){
             $Genreerror = "A genre is needed";
         } else{
-            $ItemGenre = test_input(($_POST["genre"]));
+
+            $ItemGenre = test_input2(($_POST["genre"]));
             if (!preg_match("/^[a-zA-Z-' ]*$/", $ItemGenre)){
                 $Inameerror = "only Letters and space is allowed";
         }
     }
+    if (($Priceerror == !null) || ($Inameerror == !null) || ($Quanterror == !null) || ($Genreerror == !null)){
+        $ItemRepeat = true;
+    }
+    else{
+        $ItemRepeat = false;
+    }
+    $ISTMT = $pdo -> query("SELECT ItemName FROM isaacsbooksitem");
+
+    if ($ItemRepeat == false){
+    foreach($ISTMT as $row){
+        if ($ItemName == $row["ItemName"]){
+            echo ("Same Name");
+            $ItemRepeat = true;
+        }
+    }
 }
-    function test_input($data) {
+
+}
+    function test_input2($data) {
        $data = trim($data);
        $data = stripslashes($data);
        $data = htmlspecialchars($data);
@@ -91,12 +112,16 @@
     ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         Item Name: <input type="text" name="name">
+        <span class="error">* <?php echo $Inameerror;?></span>
         Item quantitiy: <input type="text" name="quant">
+        <span class="error">* <?php echo $Quanterror;?></span>
         Price £: <input type="text" name="price">
+        <span class="error">* <?php echo $Priceerror;?></span>
         Genre: <input type="text" name="genre">
+        <span class="error">* <?php echo $Genreerror;?></span>
         <input type="submit" name="submit" value="submit">
     </form>
-  </div>
+     </div>
     </body>
   <footer>
     <p>this text is a test for formattings sake</p>
