@@ -60,6 +60,8 @@ $UserLogin = "";
 $PwordLogin = "";
 $NameMatchDB = false;
 $PwordMatchDB = false;
+/* Item Page*/
+$ISTMT = $pdo -> query("SELECT ItemName FROM isaacsbooksitem");
 
 
 
