@@ -62,7 +62,10 @@ $NameMatchDB = false;
 $PwordMatchDB = false;
 /* Item Page*/
 $ISTMT = $pdo -> query("SELECT ItemName FROM isaacsbooksitem");
-
+$ItemName = "";
+$ItemQuantity=0;
+$ItemPrice=0;
+$ItemGenre="";
 
 
 ?>

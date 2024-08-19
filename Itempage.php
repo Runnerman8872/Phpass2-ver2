@@ -49,13 +49,52 @@
   </nav>
   <div class="flex-container">
     <?php
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {}
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if(empty($_POST["name"])){
+            $Inameerror = "Name is required";
+        } else{
+            $ItemName = test_input($_POST["name"]);
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $ItemName)){
+                $Inameerror = "only Letters and space is allowed";
+            }
+        }
+        if(empty($_POST["quant"])){
+            $Quanterror = "quantity is required";
+        } else{
+            $ItemQuantity = test_input(($_POST["quant"]));
+        }
+
+        if(empty($_POST["price"])){
+            $Priceerror = "price is needed";
+        } else{
+            $ItemPrice = test_input(($_POST["price"]));
+            if(!preg_match("/^\d+(\.\d{1,2})?$/", $ItemPrice)){
+                $Priceerror =  "this isn't a valid currency input";
+            }
+        }
+        if(empty($_POST["genre"])){
+            $Genreerror = "A genre is needed";
+        } else{
+            $ItemGenre = test_input(($_POST["genre"]));
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $ItemGenre)){
+                $Inameerror = "only Letters and space is allowed";
+        }
+    }
+}
+    function test_input($data) {
+       $data = trim($data);
+       $data = stripslashes($data);
+       $data = htmlspecialchars($data);
+       return $data;
+     }
             
     ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         Item Name: <input type="text" name="name">
         Item quantitiy: <input type="text" name="quant">
         Price £: <input type="text" name="price">
+        Genre: <input type="text" name="genre">
+        <input type="submit" name="submit" value="submit">
     </form>
   </div>
     </body>
