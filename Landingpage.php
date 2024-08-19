@@ -33,9 +33,9 @@
             <ntc>User</ntc>
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="Loginpage.php"><ntc>Login</ntc></a></li>
-            <li><a class="dropdown-item" href="Logoutpage.php"><ntc>Log out</ntc></a></li>
-            <li><a class="dropdown-item" href="Signuppage.php"><ntc>Sign up</ntc></a></li>
+            <?php
+            require_once("Loginpage.php")
+            ?>
           </ul>
         </li>
       </ul>

@@ -29,6 +29,10 @@
             ?>
 
             <?php if ($_SESSION["logged_in"] == false):?>
+                <?php
+                $_SESSION["UserLogin"] = null;
+                $_SESSION["PwordLogin"] = null;
+                ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
                 Username:<input type = "text" name = "loname">
                 <br></br>
@@ -41,6 +45,7 @@
                 <form method="post">
                 <input type="submit" name="Logout"
                 class="button" value="Logout" />
+
                 </form> 
             <?php endif;?>
           </ul>
