@@ -48,6 +48,7 @@ setcookie (
 $Username = "";
 $UserPword = "";
 $UserEmail = "";
+$UserAdmin = "";
 $nameerror = "";
 $passworderror = "";
 $emailerror = "";

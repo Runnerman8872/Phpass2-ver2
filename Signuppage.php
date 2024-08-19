@@ -76,6 +76,11 @@
         }
         $SUEmailRepeat = false;
       }
+    if (empty($_POST["admin"])){
+      $UserAdmin = 0;
+    } else{
+      $UserAdmin = 1;
+    }
       $stmt2 = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
       $stmt3 = $pdo -> query("SELECT UserEmail FROM isaacsbooksuser");
 
@@ -95,7 +100,7 @@
     }
 #Primary issue: can add info via below code VV but cant add data via the $ system (I.E. $Username wont add the inputted user data but Test1 as shown below does)
     if ($SUEmailRepeat == false && $SUNameRepeat == false){
-      $AddUser = $pdo -> query("INSERT INTO isaacsbooksuser (UserName, UserEmail, UserPassword) VALUES('$Username', '$UserEmail', '$UserPword');");
+      $AddUser = $pdo -> query("INSERT INTO isaacsbooksuser (UserName, UserEmail, UserPassword, UserAdmin) VALUES('$Username', '$UserEmail', '$UserPword', '$UserAdmin');");
     }
     }
   
@@ -118,6 +123,7 @@
       <span class="error">* <?php echo $passworderror;?></span>
       Email: <input type="text" name="email">
       <span class="error">* <?php echo $emailerror;?></span>
+      Admin: <input type="checkbox" name="admin" value="1">
       <input type="submit" name="submit" value="submit"> 
     </form>
     <?php

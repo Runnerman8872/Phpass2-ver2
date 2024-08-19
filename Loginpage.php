@@ -4,10 +4,11 @@
             $LPError = "";
             $LG = "";
             $LP = "";
+            $ADM = 0;
             $LGID = 3333333333;
             $LPID = 3333333334;
             $LGMatch = false;
-            $stmt4 = $pdo -> query("SELECT UserPassword, UserID FROM isaacsbooksuser");
+            $stmt4 = $pdo -> query("SELECT UserPassword, UserID, UserAdmin FROM isaacsbooksuser");
             $stmt5 = $pdo -> query("SELECT UserName, UserID FROM isaacsbooksuser");
             $stmt6 = $pdo -> query("SELECT UserID FROM isaacsbooksuser");
             
@@ -35,6 +36,7 @@
           if ($LG == $row["UserName"]){
              echo "nameright";
              $LGID = $row["UserID"];
+             
             }
           else{
             $LGError = "Username is incorrect";
@@ -43,6 +45,7 @@
             if ($LP == $row["UserPassword"]){
                 echo "passwordright";
                 $LPID = $row["UserID"];
+                $ADM = $row["UserAdmin"];
             }
             else{
                 $LGError = "Password is incorrect";
@@ -51,6 +54,7 @@
                 $LGMatch = true;
                 $_SESSION["UserLogin"] = $LG;
                 $_SESSION["PwordLogin"] = $LP;
+                $_SESSION["AdminLogin"] = $ADM;
 
             }
             else{
@@ -71,6 +75,7 @@
                 <?php
                 $_SESSION["UserLogin"] = null;
                 $_SESSION["PwordLogin"] = null;
+                $_SESSION["AdminLogin"] = null;
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
                 Username:<input type = "text" name = "loname">
