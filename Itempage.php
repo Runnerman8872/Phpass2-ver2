@@ -96,7 +96,7 @@
     else{
         $ItemRepeat = false;
     }
-    $ISTMT = $pdo -> query("SELECT ItemName FROM isaacsbooksitem");
+    $ISTMT = $pdo -> query("SELECT ItemName, ItemQuant, ItemPrice, Genre FROM isaacsbooksitem");
 
     if ($ItemRepeat == false){
     foreach($ISTMT as $row){
@@ -136,7 +136,34 @@
         <br><br>
         <input type="submit" name="submit" value="submit">
     </form>
+    <br><br>
+    <table class="table">
+      <thead>
+        <tr>
+        <th>Item Name</th>
+       <th>quantitiy</th>
+       <th>Item Price</th>
+       <th>Item genre</th>
+       <th>remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <?php
+        $IBSTMT = $pdo -> query("SELECT ItemName, ItemQuant, ItemPrice, Genre FROM isaacsbooksitem");
+        foreach($IBSTMT as $row):?>
+        <tr>
+          <td><?php echo $row["ItemName"];?></td>
+          <td><?php echo $row["ItemQuant"];?></td>
+          <td><?php echo $row["ItemPrice"];?></td>
+          <td><?php echo $row["Genre"];?></td>
+          <td><input type="submit" name="delete" value="delete"></td>
+        </tr>
+        <?php endforeach?>
+      </tbody>
+     </table>
      </div>
+
     </body>
   <footer>
     <p>this text is a test for formattings sake</p>

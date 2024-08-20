@@ -51,13 +51,6 @@
   <div class="flex-container">
     <p>this text is a test for formattings sake</p>
     <?php 
-      echo $LGID, $LPID, $_SESSION["UserLogin"], $_SESSION["PwordLogin"];
-    if ($_SESSION["logged_in"] == true){
-      echo "true ". $_SESSION["UserLogin"]. $_SESSION["PwordLogin"];
-    }
-    else{
-      echo "false ".  $_SESSION["UserLogin"], $_SESSION["PwordLogin"];
-    }
     ?>
   </div>
     </body>
