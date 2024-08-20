@@ -14,12 +14,12 @@
             
             if ($_SERVER['REQUEST_METHOD'] == "POST"){
               if (empty($_POST["loname"])){
-                echo "empty";
+                echo "";
               } else{
                 $LG = test_input($_POST["loname"]);
               }
               if(empty ($_POST["lopassword"])){
-                echo "empy";
+                echo "";
               } else{
                 $LP = test_input(($_POST["lopassword"]));
               }

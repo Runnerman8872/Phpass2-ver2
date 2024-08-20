@@ -14,7 +14,7 @@
 
         <nav class="navbar navbar-expand-lg" style="background-color: #A84E4F;" data-bs-theme="dark"
     <div class="container-fluid">
-    <a class="navbar-brand" href="HomePage.php">Navbar</a>
+    <a class="navbar-brand" href="HomePage.php">Isaacs Books</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -164,7 +164,7 @@
           <td><?php echo $row["ItemPrice"];?></td>
           <td><?php echo $row["Genre"];?></td>
           <td>
-            <input type="submit" name="delete"></input>
+            <input type="submit" name="delete" value ="Delete"></input>
           </td>
         </tr>
         <?php endforeach?>
