@@ -63,7 +63,7 @@
             $Quanterror = "quantity is required";
         } else{
 
-            $ItemQuantity = test_input2(($_POST["quant"]));
+            $ItemQuant = test_input2(($_POST["quant"]));
         }
 
         if(empty($_POST["price"])){
@@ -84,6 +84,12 @@
                 $Inameerror = "only Letters and space is allowed";
         }
     }
+    if(empty($_POST["description"])){
+      $ItemDesc = null;
+    } else{
+      $ItemDesc = test_input2(($_POST["description"]));
+    }
+
     if (($Priceerror == !null) || ($Inameerror == !null) || ($Quanterror == !null) || ($Genreerror == !null)){
         $ItemRepeat = true;
     }
@@ -100,6 +106,9 @@
         }
     }
 }
+    if ($ItemRepeat == false){
+      $AddItem = $pdo -> query("INSERT INTO isaacsbooksitem (ItemName, ItemQuant, ItemPrice, Genre, ItemDesc) VALUES('$ItemName', '$ItemQuant','$$ItemPrice', '$ItemGenre', '$ItemDesc');");
+    }
 
 }
     function test_input2($data) {
@@ -113,12 +122,18 @@
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         Item Name: <input type="text" name="name">
         <span class="error">* <?php echo $Inameerror;?></span>
+        <br><br>
         Item quantitiy: <input type="text" name="quant">
         <span class="error">* <?php echo $Quanterror;?></span>
+        <br><br>
         Price £: <input type="text" name="price">
         <span class="error">* <?php echo $Priceerror;?></span>
+        <br><br>
         Genre: <input type="text" name="genre">
         <span class="error">* <?php echo $Genreerror;?></span>
+        <br><br>
+        Description: <input type="text" name="description">
+        <br><br>
         <input type="submit" name="submit" value="submit">
     </form>
      </div>

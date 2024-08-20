@@ -63,9 +63,10 @@ $PwordMatchDB = false;
 /* Item Page*/
 $ItemRepeat = true;
 $ItemName = "";
-$ItemQuantity=0;
+$ItemQuant=0;
 $ItemPrice=0;
 $ItemGenre="";
+$ItemDesc="";
 $Inameerror="";
 $Quanterror="";
 $Priceerror="";
