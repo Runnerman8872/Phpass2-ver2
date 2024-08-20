@@ -1,5 +1,3 @@
-<p>H test</p>
-
 <?php
 
 #useful assistant https://www.w3schools.com/php/php_form_url_email.asp
@@ -32,17 +30,8 @@ $stmt = $pdo -> query("SELECT UserName FROM isaacsbooksuser");
 
 session_start();
 
-foreach ($stmt as $row)
-{
-    echo $row["UserName"]."\n";
-}
 
 
-  echo"php test";
-/* cookie info */
-setcookie (
-  "Gorp", "1"
-);
 
 /* Signup page */
 $Username = "";

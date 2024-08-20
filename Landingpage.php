@@ -36,7 +36,13 @@
             <?php
             require_once("Loginpage.php")
             ?>
-          </ul>
+        </li>
+        <?php if ($_SESSION["AdminLogin"] == 1):?>
+        <li class="nav-item">
+          <a class="nav-link" href="Itempage.php"><ntc>Add Item</ntc></a>
+        </li>
+          <?php else:?>
+        <?php endif?>
         </li>
       </ul>
     </div>

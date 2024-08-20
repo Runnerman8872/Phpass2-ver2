@@ -87,14 +87,12 @@
         foreach ($stmt2 as $row)
       {
         if ($Username == $row["UserName"]){
-          echo (" Same name \n");
           $SUNameRepeat = true;
         }
      }
      foreach ($stmt3 as $row2)
      {
        if ($UserEmail == $row2["UserEmail"]){
-         echo (" Same email \n");
          $SUEmailRepeat = true;
        }
     }
@@ -111,7 +109,6 @@
       return $data;
     }
 
-    echo "Name: $Username, password: $UserPword, Email: $UserEmail";
 
 
 
@@ -119,34 +116,18 @@
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
       Name: <input type="text" name="name">
       <span class="error">* <?php echo $nameerror;?></span>
+      <br><br>
       Password: <input type="text" name="password">
       <span class="error">* <?php echo $passworderror;?></span>
+      <br><br>
       Email: <input type="text" name="email">
       <span class="error">* <?php echo $emailerror;?></span>
+      <br><br>
       Admin: <input type="checkbox" name="admin" value="1">
       <input type="submit" name="submit" value="submit"> 
     </form>
     <?php
 
-    
-
-    if ($SUEmailRepeat == false){
-      echo("email has no repeated \n");
-    } else{
-      echo("email has repeated unfortunately \n");
-    }
-
-    if ($SUNameRepeat == false){
-      echo("name has no repeated \n");
-    } else{
-      echo("name has repeated unfortunately \n");
-    }
-    if ($_SESSION["logged_in"] == true){
-      echo "true ". $_SESSION["UserLogin"]. $_SESSION["PwordLogin"];
-    }
-    else{
-      echo "false ".  $_SESSION["UserLogin"], $_SESSION["PwordLogin"];
-    }
 
     ?>
     </body>
