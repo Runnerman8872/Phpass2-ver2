@@ -49,6 +49,7 @@
   </nav>
   <div class="flex-container">
     <?php
+
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if(empty($_POST["name"])){
             $Inameerror = "Name is required";
@@ -117,7 +118,7 @@
        $data = htmlspecialchars($data);
        return $data;
      }
-            
+     $a = "";    
     ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         Item Name: <input type="text" name="name">
@@ -134,7 +135,7 @@
         <br><br>
         Description: <input type="text" name="description">
         <br><br>
-        <input type="submit" name="submit" value="submit">
+        <input type="submit" name="submit">
     </form>
     <br><br>
     <table class="table">
@@ -148,16 +149,23 @@
         </tr>
       </thead>
       <tbody>
-        
+
         <?php
         $IBSTMT = $pdo -> query("SELECT ItemName, ItemQuant, ItemPrice, Genre FROM isaacsbooksitem");
         foreach($IBSTMT as $row):?>
         <tr>
+          <?php
+          if(isset($_POST["delete"])){
+            $a = $row["ItemName"];
+          }
+          ?>
           <td><?php echo $row["ItemName"];?></td>
           <td><?php echo $row["ItemQuant"];?></td>
           <td><?php echo $row["ItemPrice"];?></td>
           <td><?php echo $row["Genre"];?></td>
-          <td><input type="submit" name="delete" value="delete"></td>
+          <td>
+            <input type="submit" name="delete"></input>
+          </td>
         </tr>
         <?php endforeach?>
       </tbody>
@@ -167,5 +175,8 @@
     </body>
   <footer>
     <p>this text is a test for formattings sake</p>
+    <?php
+    echo $a;
+    ?>
   </footer>
 </html>
